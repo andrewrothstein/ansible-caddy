@@ -1,0 +1,11 @@
+---
+# vars file for caddy
+caddy_platform: '{{ caddy_os }}_{{ caddy_arch }}'
+caddy_archive: caddy_{{ caddy_ver }}_{{ caddy_platform }}.{{ caddy_archive_type | default("tar.gz") }}
+caddy_tmp_archive: /tmp/{{ caddy_archive }}
+caddy_url: '{{ caddy_mirror }}/v{{ caddy_ver }}/{{ caddy_archive }}'
+caddy_checksum: '{{ caddy_checksums[caddy_ver][caddy_platform] }}'
+
+caddy_install_dir: '{{ caddy_parent_install_dir }}/caddy_{{ caddy_ver }}'
+caddy_fq_exe: '{{ caddy_install_dir }}/caddy'
+caddy_fq_link: '{{ caddy_parent_install_dir }}/bin/caddy'

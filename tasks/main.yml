@@ -1,0 +1,56 @@
+---
+- name: resolve platform specific vars
+  include_vars: '{{ item }}'
+  with_first_found:
+    - files:
+        - '{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml'
+        - '{{ ansible_distribution }}.yml'
+        - '{{ ansible_os_family }}.yml'
+      skip: true
+      paths:
+        - '{{ role_path }}/vars'
+- name: check for install in {{ caddy_install_dir }}
+  become: yes
+  stat:
+    path: '{{ caddy_install_dir }}'
+  changed_when: False
+  register: caddy_binary
+- when: not caddy_binary.stat.exists
+  block:
+    - name: downloading {{ caddy_url }}
+      become: yes
+      become_user: root
+      get_url:
+        url: '{{ caddy_url }}'
+        dest: '{{ caddy_tmp_archive }}'
+        mode: 0644
+        checksum: '{{ caddy_checksum }}'
+    - name: mkdir {{ caddy_install_dir }}
+      become: yes
+      become_user: root
+      file:
+        path: '{{ caddy_install_dir }}'
+        state: directory
+        mode: 0755
+    - name: unarchive {{ caddy_tmp_archive }} to {{ caddy_install_dir }}
+      become: yes
+      become_user: root
+      unarchive:
+        remote_src: yes
+        src: '{{ caddy_tmp_archive }}'
+        dest: '{{ caddy_install_dir }}'
+        creates: '{{ caddy_fq_exe }}'
+  always:
+    - name: rm {{ caddy_tmp_archive }}
+      become: yes
+      become_user: root
+      file:
+        path: '{{ caddy_tmp_archive }}'
+        state: absent
+- name: link {{ caddy_fq_link }} to {{ caddy_fq_exe }}
+  become: yes
+  become_user: root
+  file:
+    src: '{{ caddy_fq_exe }}'
+    dest: '{{ caddy_fq_link }}'
+    state: link

@@ -1,0 +1,10 @@
+---
+- hosts: all
+  roles:
+  - role: '{{ playbook_dir }}'
+  tasks:
+  - command: /usr/local/bin/caddy version
+    register: caddy_test_output
+  - name: caddy version
+    debug:
+      msg: '{{ caddy_test_output.stdout }}'
