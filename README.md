@@ -1,9 +1,8 @@
 andrewrothstein.caddy
 =========
-[![Build Status](https://travis-ci.org/andrewrothstein/ansible-caddy.svg?branch=master)](https://travis-ci.org/andrewrothstein/ansible-caddy)
+![Build Status](https://github.com/andrewrothstein/ansible-caddy/actions/workflows/build.yml/badge.svg)
 
-Installs [caddy](https://github.com/caddyserver/caddy
-)
+Installs [caddy](https://github.com/caddyserver/caddy)
 
 Requirements
 ------------
