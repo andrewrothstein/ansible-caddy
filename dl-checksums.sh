@@ -42,7 +42,9 @@ dl_ver() {
     dl $ver $lchecksums linux ppc64le
     dl $ver $lchecksums linux s390x
     dl $ver $lchecksums mac amd64
+    dl $ver $lchecksums mac arm64
     dl $ver $lchecksums windows amd64 zip
+    dl $ver $lchecksums windows arm64 zip
 }
 
-dl_ver ${1:-2.4.6}
+dl_ver ${1:-2.5.0}
