@@ -1,5 +1,7 @@
 ---
 # vars file for caddy
+caddy_os: '{{ caddy_os_map[ansible_system] }}'
+caddy_arch: '{{ caddy_arch_map[ansible_architecture] }}'
 caddy_platform: '{{ caddy_os }}_{{ caddy_arch }}'
 caddy_archive: caddy_{{ caddy_ver }}_{{ caddy_platform }}.{{ caddy_archive_type | default("tar.gz") }}
 caddy_tmp_archive: /tmp/{{ caddy_archive }}

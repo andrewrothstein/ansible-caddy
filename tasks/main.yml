@@ -1,4 +1,6 @@
 ---
+- include_role:
+    name: andrewrothstein.unarchive-deps
 - name: resolve platform specific vars
   include_vars: '{{ item }}'
   with_first_found:
@@ -10,7 +12,7 @@
       paths:
         - '{{ role_path }}/vars'
 - name: check for install in {{ caddy_install_dir }}
-  become: yes
+  become: true
   stat:
     path: '{{ caddy_install_dir }}'
   changed_when: False
@@ -18,7 +20,7 @@
 - when: not caddy_binary.stat.exists
   block:
     - name: downloading {{ caddy_url }}
-      become: yes
+      become: true
       become_user: root
       get_url:
         url: '{{ caddy_url }}'
@@ -26,29 +28,29 @@
         mode: 0644
         checksum: '{{ caddy_checksum }}'
     - name: mkdir {{ caddy_install_dir }}
-      become: yes
+      become: true
       become_user: root
       file:
         path: '{{ caddy_install_dir }}'
         state: directory
         mode: 0755
     - name: unarchive {{ caddy_tmp_archive }} to {{ caddy_install_dir }}
-      become: yes
+      become: true
       become_user: root
       unarchive:
-        remote_src: yes
+        remote_src: true
         src: '{{ caddy_tmp_archive }}'
         dest: '{{ caddy_install_dir }}'
         creates: '{{ caddy_fq_exe }}'
   always:
     - name: rm {{ caddy_tmp_archive }}
-      become: yes
+      become: true
       become_user: root
       file:
         path: '{{ caddy_tmp_archive }}'
         state: absent
 - name: link {{ caddy_fq_link }} to {{ caddy_fq_exe }}
-  become: yes
+  become: true
   become_user: root
   file:
     src: '{{ caddy_fq_exe }}'
