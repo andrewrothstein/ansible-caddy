@@ -15,7 +15,7 @@
   become: true
   stat:
     path: '{{ caddy_install_dir }}'
-  changed_when: False
+  changed_when: false
   register: caddy_binary
 - when: not caddy_binary.stat.exists
   block:
