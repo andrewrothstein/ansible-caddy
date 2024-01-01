@@ -1,8 +1,9 @@
 ---
-- include_role:
+- name: Installing unarchivedeps
+  ansible.builtin.include_role:
     name: andrewrothstein.unarchivedeps
-- name: resolve platform specific vars
-  include_vars: '{{ item }}'
+- name: Resolve platform specific vars
+  ansible.builtin.include_vars: '{{ item }}'
   with_first_found:
     - files:
         - '{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml'
@@ -11,48 +12,48 @@
       skip: true
       paths:
         - '{{ role_path }}/vars'
-- name: check for install in {{ caddy_install_dir }}
+- name: Check for install in {{ caddy_install_dir }}
   become: true
-  stat:
+  ansible.builtin.stat:
     path: '{{ caddy_install_dir }}'
   changed_when: false
   register: caddy_binary
 - when: not caddy_binary.stat.exists
   block:
-    - name: downloading {{ caddy_url }}
+    - name: Downloading {{ caddy_url }}
       become: true
       become_user: root
-      get_url:
+      ansible.builtin.get_url:
         url: '{{ caddy_url }}'
         dest: '{{ caddy_tmp_archive }}'
-        mode: 0644
+        mode: '644'
         checksum: '{{ caddy_checksum }}'
-    - name: mkdir {{ caddy_install_dir }}
+    - name: Mkdir {{ caddy_install_dir }}
       become: true
       become_user: root
-      file:
+      ansible.builtin.file:
         path: '{{ caddy_install_dir }}'
         state: directory
-        mode: 0755
-    - name: unarchive {{ caddy_tmp_archive }} to {{ caddy_install_dir }}
+        mode: '755'
+    - name: Unarchive {{ caddy_tmp_archive }} to {{ caddy_install_dir }}
       become: true
       become_user: root
-      unarchive:
+      ansible.builtin.unarchive:
         remote_src: true
         src: '{{ caddy_tmp_archive }}'
         dest: '{{ caddy_install_dir }}'
         creates: '{{ caddy_fq_exe }}'
   always:
-    - name: rm {{ caddy_tmp_archive }}
+    - name: Rm {{ caddy_tmp_archive }}
       become: true
       become_user: root
-      file:
+      ansible.builtin.file:
         path: '{{ caddy_tmp_archive }}'
         state: absent
-- name: link {{ caddy_fq_link }} to {{ caddy_fq_exe }}
+- name: Link {{ caddy_fq_link }} to {{ caddy_fq_exe }}
   become: true
   become_user: root
-  file:
+  ansible.builtin.file:
     src: '{{ caddy_fq_exe }}'
     dest: '{{ caddy_fq_link }}'
     state: link
