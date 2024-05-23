@@ -1,7 +1,4 @@
 ---
-- name: Installing unarchivedeps
-  ansible.builtin.include_role:
-    name: andrewrothstein.unarchivedeps
 - name: Resolve platform specific vars
   ansible.builtin.include_vars: '{{ item }}'
   with_first_found:
@@ -18,7 +15,8 @@
     path: '{{ caddy_install_dir }}'
   changed_when: false
   register: caddy_binary
-- when: not caddy_binary.stat.exists
+- name: Downloading and installing caddy
+  when: not caddy_binary.stat.exists
   block:
     - name: Downloading {{ caddy_url }}
       become: true
@@ -35,6 +33,9 @@
         path: '{{ caddy_install_dir }}'
         state: directory
         mode: '755'
+    - name: Installing andrewrothtein.unarchivedeps
+      ansible.builtin.include_role:
+        name: andrewrothstein.unarchivedeps
     - name: Unarchive {{ caddy_tmp_archive }} to {{ caddy_install_dir }}
       become: true
       become_user: root
