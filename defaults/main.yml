@@ -1,6 +1,6 @@
 ---
 # defaults file for caddy
-caddy_ver: 2.7.6
+caddy_ver: 2.8.4
 caddy_os_map:
   Linux: linux
   Darwin: mac
@@ -350,3 +350,35 @@ caddy_checksums:
     windows_amd64: sha512:b2321473be1da500a8f6e4276aed03b11946e3758b792a3e9ba50c07246456d64d7da931d6d58be43e6d3cfd07c1ad68f6838df8e090bd5d212224a9bf94daec
     # https://github.com/caddyserver/caddy/releases/download/v2.7.6/caddy_2.7.6_windows_arm64.zip
     windows_arm64: sha512:a747384b0700623bc3243a753beea9b33ba7d9c3721d7a8a732576ef3a323a3728d88b8af5c28662936964dc3bed76ea58e06302d5af36228f84d85c670856dd
+  # https://github.com/caddyserver/caddy/releases/download/v2.8.4/caddy_2.8.4_checksums.txt
+  '2.8.4':
+    # https://github.com/caddyserver/caddy/releases/download/v2.8.4/caddy_2.8.4_freebsd_amd64.tar.gz
+    freebsd_amd64: sha512:bcbdb36f5b09620808b52d1931ffedf9cb73cdb627835a2470aa3e5647a90fb24eaa369b41021918ab68e53285c1796cd55da4f93e4c84f6a3e1ac2959f512a1
+    # https://github.com/caddyserver/caddy/releases/download/v2.8.4/caddy_2.8.4_freebsd_arm64.tar.gz
+    freebsd_arm64: sha512:7cc540a1cbdc3aadde4be8adb9ea24717ce4a83a52972e5928e0d85ff069046e5c65c897dda5eb653e58f30f0c35d72437e40cf047aa52b7b1cd2e7951d9a80e
+    # https://github.com/caddyserver/caddy/releases/download/v2.8.4/caddy_2.8.4_freebsd_armv6.tar.gz
+    freebsd_armv6: sha512:02af56e4c009d6774a08c33d199cb36637ad137221a3c2f6276d88b9fcd268e0c7b6cd8e562d8d1b45de5df0f7e1d6bf0a9247c6488f83fbff0c304feedcb6c6
+    # https://github.com/caddyserver/caddy/releases/download/v2.8.4/caddy_2.8.4_freebsd_armv7.tar.gz
+    freebsd_armv7: sha512:db58b4990478593fd8cb0fdfec3b49aba6e60c059fdb91443a50f67334a725dca05132fa69356bbc140ac17fcb67245ea908093199a09708d965ceb3ee96f649
+    # https://github.com/caddyserver/caddy/releases/download/v2.8.4/caddy_2.8.4_linux_amd64.tar.gz
+    linux_amd64: sha512:b8bec15d14fb033562af9f207850027bcbaa1f891edc9efe00d38bf39e1bf9944f8b6b8eba041ddd4c171cd70c905174c704d705be2f23bc678fe1eaf37a2485
+    # https://github.com/caddyserver/caddy/releases/download/v2.8.4/caddy_2.8.4_linux_arm64.tar.gz
+    linux_arm64: sha512:5466234be3e988071cef937aedbdd94c15b6f75cf7307397e67c2641219ac9bfe2c2bb3b31fc05bc68d3b6398bbe50abfa16ccf3b127318ccac31115ad26507c
+    # https://github.com/caddyserver/caddy/releases/download/v2.8.4/caddy_2.8.4_linux_armv5.tar.gz
+    linux_armv5: sha512:7528e7f521e599dfc972082335e5e94782cabd3011a6b222822442be52d7a2ae99badbaf69714928646a247f42617808402461d0c4e681ed8b03c161a2da99cb
+    # https://github.com/caddyserver/caddy/releases/download/v2.8.4/caddy_2.8.4_linux_armv6.tar.gz
+    linux_armv6: sha512:640536eee0645342a8cb3bfe6ca3ad5bce8a22fee371eb295192d4e95971802a4f4dbe3a188d2be577762547f713e8ac708f8e9b6acf4806cdf509ce54954eac
+    # https://github.com/caddyserver/caddy/releases/download/v2.8.4/caddy_2.8.4_linux_armv7.tar.gz
+    linux_armv7: sha512:8aecf8866a6dbdc46d550d2d957afc26dd262a8fa1fd6feb122df961ef57d2301b720556e6ff180f1ea0ae19e13f1cc6ea9935eae58efb68b8821aebffe989f1
+    # https://github.com/caddyserver/caddy/releases/download/v2.8.4/caddy_2.8.4_linux_ppc64le.tar.gz
+    linux_ppc64le: sha512:90c4a779f52b86d4b615a15acdec01db986a88fb606ca11145c21cfc4e64b417296fe0a54416f2c295600f8a2994a073a40028b1b1583403b416464bf39de173
+    # https://github.com/caddyserver/caddy/releases/download/v2.8.4/caddy_2.8.4_linux_s390x.tar.gz
+    linux_s390x: sha512:ed67cecdb9f50379d75805ebeb687183f096d3206cef053b768e87eceb4472fd568f47ef8fe0939f019f38e298a3a41243ba9caa193f57e7b29e4daa700898bc
+    # https://github.com/caddyserver/caddy/releases/download/v2.8.4/caddy_2.8.4_mac_amd64.tar.gz
+    mac_amd64: sha512:6784719ca63df7790fa36dc93b8d4b09d700a90bdc1a11c226257d2645766fbc014ffa444be1f16eac3b864a43675f6827753e9d8ae1500dd68d99f3ff794729
+    # https://github.com/caddyserver/caddy/releases/download/v2.8.4/caddy_2.8.4_mac_arm64.tar.gz
+    mac_arm64: sha512:16b930bc4fc4d5c5e713cf4c6955c0c33215c7014244effc102c49d6552a8790c4bf53c2c5e89333aae5b6e4f057148e5ffd994e0249bdffacc65d8dd8ff8a87
+    # https://github.com/caddyserver/caddy/releases/download/v2.8.4/caddy_2.8.4_windows_amd64.zip
+    windows_amd64: sha512:89f8fc9ece9941a15a0981b3c69543d3b9b5fe095e747875a05fc1775d4d78d4505a7fe54a58d496dade601e85f6053a00a1b0382a781d3e8b6eec044384f6e6
+    # https://github.com/caddyserver/caddy/releases/download/v2.8.4/caddy_2.8.4_windows_arm64.zip
+    windows_arm64: sha512:543c06c5d9c2c0562b19f27692b2cda6c4ee898b79a4798dc562a0557fa833ba6f6e1401357afe7eb1b3699acaa1e602cc0fb3e9fcfc202479b18a63be2dff7b
